@@ -18,6 +18,8 @@ public class DebugExercise3 {
         return totalTurnips;
     }
 
+    /* Bug is at  kroger xxxxx */
+
     public static void main(String[] args) {
         In in = new In("foods.csv");
         System.out.println(countTurnips(in));
