@@ -73,7 +73,7 @@ public class LinkedListDeque<T> {
         return res;
     }
 
-    public T getIterative(int index){
+    public T get(int index){
         if(size < index + 1){
             return null;
         }
@@ -114,7 +114,7 @@ public class LinkedListDeque<T> {
 //        l.addFirst(12);
 //        l.addLast(13);
 //        l.removeFirst();
-//        Integer a = l.getIterative(0);
+//        Integer a = l.get(0);
 //        System.out.println(a);
     }
 
