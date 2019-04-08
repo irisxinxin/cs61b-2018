@@ -21,9 +21,9 @@ public class ArrayDeque<T> {
         }
         item = resizedItem;
         head = 0;
-        if(size == 0){
+        if (size == 0){
             tail = 0;
-        }else {
+        } else {
             tail = size - 1;
         }
     }
@@ -31,9 +31,9 @@ public class ArrayDeque<T> {
       // Using circular method and simplifying conditional choice by %
     // This method is served to get the indices that need to minus one
     private int minusOne(int index){
-        if(index == 0){
+        if (index == 0){
             index = item.length - 1;
-        }else{
+        } else {
             index = (index - 1) % item.length;
         }
         return index;
@@ -46,37 +46,39 @@ public class ArrayDeque<T> {
     }
 
     public void addFirst(T obj){
-        if(size == item.length ){
+        if (size == item.length){
             resize(size * 2);
         }
-        if(size == 0){
+        if (size == 0){
             item[head] = obj;
             item[tail] = obj;
-            size ++;
-        }else{
+            size++;
+        } else {
         head = minusOne(head);
         item[head] = obj;
-        size ++;}
+        size++;
+        }
     }
 
     public void addLast(T obj){
-        if(size == item.length){
+        if (size == item.length){
             resize(size * 2);
         }
-        if(size == 0){
+        if (size == 0){
             item[head] = obj;
             item[tail] = obj;
-            size ++;
-        }else{
+            size++;
+        } else {
         tail = addOne(tail);
         item[tail] = obj;
-        size ++;}
+        size++;
+        }
     }
 
     public boolean isEmpty(){
-        if(size == 0){
+        if (size == 0){
             return true;
-        }else{
+        } else {
             return false;
         }
     }
@@ -88,61 +90,60 @@ public class ArrayDeque<T> {
     // Special case : the AList is empty.  >> means to devide by 4
 
     public T removeFirst(){
-        if(isEmpty()){
+        if (isEmpty()){
             return null;
         }
         T res = item[head];
         item[head] = null;
-        size --;
-        if(size == 0){
+        size--;
+        if (size == 0){
             resize( 1);
             return res;
         }
         head = addOne(head);
-        if( size < 0.25 * item.length && size != 0){
+        if (size < 0.25 * item.length && size != 0){
             resize( item.length >> 2);
         }
         return res;
     }
 
     public T removeLast(){
-        if(isEmpty()){
+        if (isEmpty()){
             return null;
         }
-
         T res = item[tail];
         item[tail] = null;
         size --;
-        if(size == 0){
+        if (size == 0){
              resize( 1);
              return res;
         }
         tail = minusOne(tail);
-        if( size < 0.25 * item.length && size != 0){
+        if (size < 0.25 * item.length && size != 0){
             resize( item.length >> 2);
         }
         return res;
     }
 
     public void printDeque(){
-        if( head <= tail) {
+        if (head <= tail){
             for (int i = head; i < tail + 1; i++) {
                 System.out.print(item[i] + " ");
             }
-        }else{
-                for(int i = head; i < item.length - 1; i++){
+        } else {
+                for (int i = head; i < item.length - 1; i++){
                     System.out.print(item[i] + " ");
                 }
-                for(int i = 0; i < tail + 1; i++){
+                for (int i = 0; i < tail + 1; i++){
                     System.out.print(item[i] + " ");
                 }
             }
         }
 
     public T get(int index){
-        if(index > size - 1){
+        if (index > size - 1){
         return null;
-        } else{
+        } else {
             int realIndex = head + index <= item.length - 1 ? (head + index) : (index - (item.length - head));
             return item[realIndex];
         }
