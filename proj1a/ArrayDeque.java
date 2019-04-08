@@ -54,9 +54,9 @@ public class ArrayDeque<T> {
             item[tail] = obj;
             size++;
         } else {
-        head = minusOne(head);
-        item[head] = obj;
-        size++;
+            head = minusOne(head);
+            item[head] = obj;
+            size++;
         }
     }
 
@@ -69,18 +69,17 @@ public class ArrayDeque<T> {
             item[tail] = obj;
             size++;
         } else {
-        tail = addOne(tail);
-        item[tail] = obj;
-        size++;
+            tail = addOne(tail);
+            item[tail] = obj;
+            size++;
         }
     }
 
     public boolean isEmpty() {
         if (size == 0) {
             return true;
-        } else {
-            return false;
         }
+        return false;
     }
 
     public int size() {
@@ -113,10 +112,10 @@ public class ArrayDeque<T> {
         }
         T res = item[tail];
         item[tail] = null;
-        size --;
+        size--;
         if (size == 0) {
-             resize( 1);
-             return res;
+            resize( 1);
+            return res;
         }
         tail = minusOne(tail);
         if (size < 0.25 * item.length && size != 0) {
@@ -131,14 +130,14 @@ public class ArrayDeque<T> {
                 System.out.print(item[i] + " ");
             }
         } else {
-                for (int i = head; i < item.length - 1; i++) {
-                    System.out.print(item[i] + " ");
+            for (int i = head; i < item.length - 1; i++) {
+                System.out.print(item[i] + " ");
                 }
-                for (int i = 0; i < tail + 1; i++) {
-                    System.out.print(item[i] + " ");
+            for (int i = 0; i < tail + 1; i++) {
+                System.out.print(item[i] + " ");
                 }
             }
-        }
+    }
 
     public T get(int index) {
         if (index > size - 1) {
