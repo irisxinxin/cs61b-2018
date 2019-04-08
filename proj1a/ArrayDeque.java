@@ -21,7 +21,11 @@ public class ArrayDeque<T> {
         }
         item = resizedItem;
         head = 0;
-        tail = size - 1;
+        if(size == 0){
+            tail = 0;
+        }else {
+            tail = size - 1;
+        }
     }
 
       // Using circular method and simplifying conditional choice by %
@@ -89,8 +93,12 @@ public class ArrayDeque<T> {
         }
         T res = item[head];
         item[head] = null;
-        head = addOne(head);
         size --;
+        if(size == 0){
+            resize( 1);
+            return res;
+        }
+        head = addOne(head);
         if( size < 0.25 * item.length && size != 0){
             resize( item.length >> 2);
         }
@@ -101,10 +109,15 @@ public class ArrayDeque<T> {
         if(isEmpty()){
             return null;
         }
+
         T res = item[tail];
         item[tail] = null;
-        tail = minusOne(tail);
         size --;
+        if(size == 0){
+             resize( 1);
+             return res;
+        }
+        tail = minusOne(tail);
         if( size < 0.25 * item.length && size != 0){
             resize( item.length >> 2);
         }
@@ -130,36 +143,69 @@ public class ArrayDeque<T> {
         if(index > size - 1){
         return null;
         } else{
-            int realIndex = head + index < item.length - 1 ? (head + index) : (index - (item.length - head));
+            int realIndex = head + index <= item.length - 1 ? (head + index) : (index - (item.length - head));
             return item[realIndex];
         }
     }
 
-    public static void main(String[] args) {
-        ArrayDeque<Integer> list = new ArrayDeque<>();
-//        for (int i = 0; i < 8; i++) {
-//            list.addFirst(i);
-//        }
-//        Integer a = list.get(7);
-//        Integer c = list.get(8);   // Integer can be null, but int cannot
-//        for (int i = 0; i < 8; i++) {
-//            list.addLast(i);
-//        }
-        // list.printDeque();
-        list.addLast(0);
-//        list.get(0);
-        list.removeFirst();
-//        Integer b = list.get(6);
-//        System.out.print(b);
-
-
+//    public static void main(String[] args) {
+//        ArrayDeque<Integer> list = new ArrayDeque<>();
+////        for (int i = 0; i < 8; i++) {
+////            list.addFirst(i);
+////        }
+////        Integer a = list.get(7);
+////        Integer c = list.get(8);   // Integer can be null, but int cannot
+////        for (int i = 0; i < 8; i++) {
+////            list.addLast(i);
+////        }
+//        // list.printDeque();
+//
+////        list.addLast(0);
+////        list.removeLast();
+////        list.addLast(2);
+////        list.removeLast()  ;
+////        list.addLast(4);
+////        list.addLast(5);
+////        list.isEmpty();
+////        list.addLast(7);
+////        list.removeLast()  ;
+////        list.removeLast();
+////        Integer b = list.get(6);
+////        System.out.print(b);
+//
+//
+////        list.removeLast();
+////        list.removeFirst();
+////        for (int i = 0; i < 8; i++) {
+////            list.removeFirst();
+////        }
+////        for (int i = 0; i < 8; i++) {
+////            list.removeLast();
+////        }
+//
+//
+////        list.addLast(0);
+////        list.isEmpty();
+////        list.removeFirst()   ;
+////        list.addLast(3);
+////        list.addLast(4);
+////        list.addLast(5);
+////        list.addLast(6);
+////        list.addLast(7);
+////        list.addLast(8);
+////        Integer a = list.removeFirst();
+////        System.out.println(a);
+//
+//        list.addFirst(0);
+//        list.addFirst(1);
 //        list.removeLast();
-//        list.removeFirst();
-//        for (int i = 0; i < 8; i++) {
-//            list.removeFirst();
-//        }
-//        for (int i = 0; i < 8; i++) {
-//            list.removeLast();
-//        }
-    }
+//        Integer a = list.get(0);
+//        list.addLast(4);
+//        list.addFirst(5);
+//        list.get(1);
+//        list.removeLast();
+//        Integer b = list.get(0);
+//        System.out.println(a);
+//        System.out.println(b);
+//    }
 }
