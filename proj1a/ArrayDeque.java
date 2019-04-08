@@ -21,7 +21,7 @@ public class ArrayDeque<T> {
         }
         item = resizedItem;
         head = 0;
-        if (size == 0){
+        if (size == 0) {
             tail = 0;
         } else {
             tail = size - 1;
@@ -30,8 +30,8 @@ public class ArrayDeque<T> {
 
       // Using circular method and simplifying conditional choice by %
     // This method is served to get the indices that need to minus one
-    private int minusOne(int index){
-        if (index == 0){
+    private int minusOne(int index) {
+        if (index == 0) {
             index = item.length - 1;
         } else {
             index = (index - 1) % item.length;
@@ -40,16 +40,16 @@ public class ArrayDeque<T> {
     }
 
     // This method is served to get the indices that need to add one
-    private int addOne(int index){
+    private int addOne(int index) {
         index = (index + 1) % item.length;
         return index;
     }
 
-    public void addFirst(T obj){
-        if (size == item.length){
+    public void addFirst(T obj) {
+        if (size == item.length) {
             resize(size * 2);
         }
-        if (size == 0){
+        if (size == 0) {
             item[head] = obj;
             item[tail] = obj;
             size++;
@@ -60,11 +60,11 @@ public class ArrayDeque<T> {
         }
     }
 
-    public void addLast(T obj){
-        if (size == item.length){
+    public void addLast(T obj) {
+        if (size == item.length) {
             resize(size * 2);
         }
-        if (size == 0){
+        if (size == 0) {
             item[head] = obj;
             item[tail] = obj;
             size++;
@@ -75,73 +75,73 @@ public class ArrayDeque<T> {
         }
     }
 
-    public boolean isEmpty(){
-        if (size == 0){
+    public boolean isEmpty() {
+        if (size == 0) {
             return true;
         } else {
             return false;
         }
     }
 
-    public int size(){
+    public int size() {
         return size;
     }
 
     // Special case : the AList is empty.  >> means to devide by 4
 
-    public T removeFirst(){
-        if (isEmpty()){
+    public T removeFirst() {
+        if (isEmpty()) {
             return null;
         }
         T res = item[head];
         item[head] = null;
         size--;
-        if (size == 0){
+        if (size == 0) {
             resize( 1);
             return res;
         }
         head = addOne(head);
-        if (size < 0.25 * item.length && size != 0){
+        if (size < 0.25 * item.length && size != 0) {
             resize( item.length >> 2);
         }
         return res;
     }
 
-    public T removeLast(){
-        if (isEmpty()){
+    public T removeLast() {
+        if (isEmpty()) {
             return null;
         }
         T res = item[tail];
         item[tail] = null;
         size --;
-        if (size == 0){
+        if (size == 0) {
              resize( 1);
              return res;
         }
         tail = minusOne(tail);
-        if (size < 0.25 * item.length && size != 0){
+        if (size < 0.25 * item.length && size != 0) {
             resize( item.length >> 2);
         }
         return res;
     }
 
-    public void printDeque(){
-        if (head <= tail){
+    public void printDeque() {
+        if (head <= tail) {
             for (int i = head; i < tail + 1; i++) {
                 System.out.print(item[i] + " ");
             }
         } else {
-                for (int i = head; i < item.length - 1; i++){
+                for (int i = head; i < item.length - 1; i++) {
                     System.out.print(item[i] + " ");
                 }
-                for (int i = 0; i < tail + 1; i++){
+                for (int i = 0; i < tail + 1; i++) {
                     System.out.print(item[i] + " ");
                 }
             }
         }
 
-    public T get(int index){
-        if (index > size - 1){
+    public T get(int index) {
+        if (index > size - 1) {
         return null;
         } else {
             int realIndex = head + index <= item.length - 1 ? (head + index) : (index - (item.length - head));
