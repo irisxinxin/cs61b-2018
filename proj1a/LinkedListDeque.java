@@ -73,29 +73,29 @@ public class LinkedListDeque<T> {
         return res;
     }
 
-    public T get(int index){
-        if(size < index - 1){
+    public T getIterative(int index){
+        if(size < index + 1){
             return null;
         }
         TNode p = sentinel;
-        for(int i = 0; i < index; i ++){
+        for(int i = 0; i < index + 1; i ++){
             p = p.next;
         }
         return (T)p.item;
     }
 
     public T getRecursive(int index){
-        if(size < index - 1){
+        if(size < index + 1){
             return null;
         }
         if(index == 0){
             return (T) sentinel.next.item;
         }
-        return getRecursive(index - 1);
+        return getRecursive(index);
     }
 
-//    public static void main(String[] args){
-//        LinkedListDeque<Integer> l = new LinkedListDeque<>();
+    public static void main(String[] args){
+        LinkedListDeque<Integer> l = new LinkedListDeque<>();
 //        l.addLast(0);
 //        l.addLast(1);
 //        l.addLast(2);
@@ -104,9 +104,18 @@ public class LinkedListDeque<T> {
 //        l.addLast(5);
 //        l.addLast(6);
 //        l.isEmpty();
-//        l.addLast(8);
-//        Integer a = l.removeFirst();
+
+//        l.addLast(4);
+//        l.removeFirst();
+//        l.addLast(7);
+//        l.removeLast();
+//        l.addLast(10);
+//        l.removeFirst();
+//        l.addFirst(12);
+//        l.addLast(13);
+//        l.removeFirst();
+//        Integer a = l.getIterative(0);
 //        System.out.println(a);
-//    }
+    }
 
 }
