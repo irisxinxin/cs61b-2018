@@ -96,12 +96,12 @@ public class ArrayDeque<T> {
         item[head] = null;
         size--;
         if (size == 0) {
-            resize( 1);
+            resize(1);
             return res;
         }
         head = addOne(head);
         if (size < 0.25 * item.length && size != 0) {
-            resize( item.length >> 2);
+            resize(item.length >> 2);
         }
         return res;
     }
@@ -114,12 +114,12 @@ public class ArrayDeque<T> {
         item[tail] = null;
         size--;
         if (size == 0) {
-            resize( 1);
+            resize(1);
             return res;
         }
         tail = minusOne(tail);
         if (size < 0.25 * item.length && size != 0) {
-            resize( item.length >> 2);
+            resize(item.length >> 2);
         }
         return res;
     }
@@ -132,18 +132,19 @@ public class ArrayDeque<T> {
         } else {
             for (int i = head; i < item.length - 1; i++) {
                 System.out.print(item[i] + " ");
-                }
+            }
             for (int i = 0; i < tail + 1; i++) {
                 System.out.print(item[i] + " ");
-                }
             }
+        }
     }
 
     public T get(int index) {
         if (index > size - 1) {
-        return null;
+            return null;
         } else {
-            int realIndex = head + index <= item.length - 1 ? (head + index) : (index - (item.length - head));
+            int realIndex = head + index <= item.length - 1 ?
+                    (head + index) : (index - (item.length - head));
             return item[realIndex];
         }
     }

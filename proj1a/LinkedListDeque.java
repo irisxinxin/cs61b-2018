@@ -82,10 +82,10 @@ public class LinkedListDeque<T> {
             return null;
         }
         TNode p = sentinel;
-        for (int i = 0; i < index + 1; i ++) {
+        for (int i = 0; i < index + 1; i++) {
             p = p.next;
         }
-        return (T)p.item;
+        return (T) p.item;
     }
 
     public T getRecursive(int index) {
@@ -96,7 +96,7 @@ public class LinkedListDeque<T> {
         if (size < index + 1) {
             return null;
         }
-        if (index == 0){
+        if (index == 0) {
             return (T) node.item;
         }
         return (T) getRecursiveHelper(node.next, index - 1);
