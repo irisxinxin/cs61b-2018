@@ -11,7 +11,7 @@ public class ArrayDeque<T> {
         tail = 0;
     }
 
-    public void resize(int capacity) {
+    private void resize(int capacity) {
         T[] resizedItem = (T[]) new Object[capacity];
         if (head <= tail) {
             System.arraycopy(item, head, resizedItem, 0, tail - head + 1);
@@ -26,7 +26,7 @@ public class ArrayDeque<T> {
 
       // Using circular method and simplifying conditional choice by %
     // This method is served to get the indices that need to minus one
-    public int minusOne(int index){
+    private int minusOne(int index){
         if(index == 0){
             index = item.length - 1;
         }else{
@@ -36,7 +36,7 @@ public class ArrayDeque<T> {
     }
 
     // This method is served to get the indices that need to add one
-    public int addOne(int index){
+    private int addOne(int index){
         index = (index + 1) % item.length;
         return index;
     }
@@ -91,7 +91,7 @@ public class ArrayDeque<T> {
         item[head] = null;
         head = addOne(head);
         size --;
-        if( size < 0.25 * item.length){
+        if( size < 0.25 * item.length && size != 0){
             resize( item.length >> 2);
         }
         return res;
@@ -105,7 +105,7 @@ public class ArrayDeque<T> {
         item[tail] = null;
         tail = minusOne(tail);
         size --;
-        if( size < 0.25 * item.length){
+        if( size < 0.25 * item.length && size != 0){
             resize( item.length >> 2);
         }
         return res;
@@ -137,23 +137,29 @@ public class ArrayDeque<T> {
 
     public static void main(String[] args) {
         ArrayDeque<Integer> list = new ArrayDeque<>();
-        for (int i = 0; i < 8; i++) {
-            list.addFirst(i);
-        }
-        Integer a = list.get(7);
-        Integer c = list.get(8);   // Integer can be null, but int cannot
-        for (int i = 8; i < 17; i++) {
-            list.addLast(i);
-        }
+//        for (int i = 0; i < 8; i++) {
+//            list.addFirst(i);
+//        }
+//        Integer a = list.get(7);
+//        Integer c = list.get(8);   // Integer can be null, but int cannot
+//        for (int i = 0; i < 8; i++) {
+//            list.addLast(i);
+//        }
         // list.printDeque();
-        int b = list.get(6);
-        list.removeLast();
+        list.addLast(0);
+//        list.get(0);
         list.removeFirst();
-        for (int i = 0; i < 8; i++) {
-            list.removeFirst();
-        }
-        for (int i = 0; i < 8; i++) {
-            list.removeLast();
-        }
+//        Integer b = list.get(6);
+//        System.out.print(b);
+
+
+//        list.removeLast();
+//        list.removeFirst();
+//        for (int i = 0; i < 8; i++) {
+//            list.removeFirst();
+//        }
+//        for (int i = 0; i < 8; i++) {
+//            list.removeLast();
+//        }
     }
 }
