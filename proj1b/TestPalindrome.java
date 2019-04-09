@@ -23,8 +23,14 @@ public class TestPalindrome {
         assertTrue(palindrome.isPalindrome(""));
         assertTrue(palindrome.isPalindrome("a"));
         assertTrue(palindrome.isPalindrome("aba"));
+        assertTrue(palindrome.isPalindrome("yuuy"));
         assertTrue(palindrome.isPalindrome("aa"));
         assertFalse(palindrome.isPalindrome("ccccca"));
+        assertFalse(palindrome.isPalindrome("yuuyy"));
+        assertTrue(palindrome.isPalindrome("AaaA"));
+        assertFalse(palindrome.isPalindrome("AaAa"));
+        assertTrue(palindrome.isPalindrome("a  a"));
+        assertTrue(palindrome.isPalindrome("abbba"));
         assertTrue(palindrome.isPalindrome("flake", cc));
         assertTrue(palindrome.isPalindrome("", cc));
         assertTrue(palindrome.isPalindrome("a", cc));
