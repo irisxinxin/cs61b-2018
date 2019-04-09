@@ -31,11 +31,11 @@ public class Palindrome{
         if (tested.size() == 0 || tested.size() == 1) {
             return true;
         }
-        OffByOne compare = (OffByOne) cc;
+       // OffByOne compare = (OffByOne) cc;
         for (int i = 0; i < tested.size()/2; i++) {
             Character first = tested.removeFirst();
             Character last = tested.removeLast();
-            if (!compare.equalChars(first, last)) {
+            if (!cc.equalChars(first, last)) {
                 return false;
             }
         }
