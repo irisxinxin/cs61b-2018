@@ -74,6 +74,9 @@ public class ArrayRingBuffer<T> extends AbstractBoundedQueue<T> {
      */
     public T peek() {
         // TODO: Return the first item. None of your instance variables should change.
+        if (isEmpty()) {
+            throw new RuntimeException();
+        }
         return rb[first];
     }
 
@@ -86,13 +89,15 @@ public class ArrayRingBuffer<T> extends AbstractBoundedQueue<T> {
     //
     private class bufferIterator implements Iterator {
         private int it;
+        private int cnt;
 
         public bufferIterator() {
             it = first;
+            cnt = 0;
         }
 
         public boolean hasNext() {
-            return it < fillCount;
+            return  cnt < fillCount;
         }
 
         public T next() {
@@ -102,6 +107,7 @@ public class ArrayRingBuffer<T> extends AbstractBoundedQueue<T> {
             } else {
                 it += 1;
             }
+            cnt += 1;
             return resVal;
         }
     }

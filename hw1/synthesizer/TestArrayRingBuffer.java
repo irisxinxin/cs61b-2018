@@ -10,19 +10,19 @@ public class TestArrayRingBuffer {
     @Test
     public void someTest() {
         ArrayRingBuffer arb = new ArrayRingBuffer(5);
-        arb.enqueue(1);
-        arb.enqueue(2);
+        arb.enqueue("a");   //231
+        arb.enqueue("b");
         arb.dequeue();
         arb.dequeue();
-        arb.enqueue(1);
-        arb.enqueue(2);
-        arb.enqueue(3);
+        arb.enqueue("c");
+        arb.enqueue("d");
+        arb.enqueue("e");
         arb.dequeue();
-        arb.dequeue();
-        arb.dequeue();
-        arb.enqueue(1);
-        System.out.println();
+        arb.enqueue("f");
 
+        for(Object s: arb) {
+            System.out.println(s);
+        }
     }
 
     /** Calls tests for ArrayRingBuffer. */
